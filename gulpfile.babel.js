@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import gulp from 'gulp';
+var scss = require('gulp-sass');
 
 // Load all gulp plugins automatically
 // and attach them to the `plugins` object
@@ -74,9 +75,8 @@ gulp.task('clean', (done) => {
 gulp.task('copy', [
     'copy:.htaccess',
     'copy:index.html',
-    'copy:jquery',
     'copy:license',
-    'copy:main.css',
+    'copy:jquery',
     'copy:misc',
     'copy:normalize'
 ]);
@@ -151,6 +151,18 @@ gulp.task('lint:js', () =>
       .pipe(plugins().jshint.reporter('jshint-stylish'))
       .pipe(plugins().jshint.reporter('fail'))
 );
+gulp.task('scss',(done)=>{
+    
+    gulp.src('src/css/*.scss')
+    .pipe(scss.sync().on('error', scss.logError))
+    .pipe(gulp.dest("dist/css")),
+    done()
+})
+
+gulp.task('scss:watch',  (done)=> {
+  gulp.watch('src/css/*.scss', ['scss']);
+});
+
 
 
 // ---------------------------------------------------------------------
@@ -167,9 +179,12 @@ gulp.task('archive', (done) => {
 
 gulp.task('build', (done) => {
     runSequence(
-        ['clean', 'lint:js'],
-        'copy',
-    done)
+        'clean' ,'scss','copy'),
+        done()
 });
+
+gulp.task('build:watch',()=>{
+    gulp.watch('src/**/**', ['build'])
+})
 
 gulp.task('default', ['build']);
