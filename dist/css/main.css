@@ -109,6 +109,9 @@ textarea {
 .borders-right {
   border-right: solid 2px #cccccc; }
 
+.reverse {
+  transform: rotateY(180deg); }
+
 .first-appear {
   opacity: 0; }
 
@@ -117,6 +120,8 @@ textarea {
   min-height: 100%;
   min-height: 100vh;
   align-items: center; }
+  .content .container-line svg {
+    width: 100%; }
 
 .text-quotes {
   float: right;
