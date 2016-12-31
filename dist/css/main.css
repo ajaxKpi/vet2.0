@@ -20,6 +20,17 @@
   font-weight: 100;
   font-style: normal; }
 
+@font-face {
+  font-family: 'fa-viber';
+  src: url("../fonts/fa-viber.eot?-3dwksg");
+  src: url("../fonts/fa-viber.eot?#iefix-3dwksg") format("embedded-opentype"), url("../fonts/fa-viber.ttf?-3dwksg") format("truetype"), url("../fonts/fa-viber.woff?-3dwksg") format("woff"), url("../fonts/fa-viber.svg?-3dwksg#fa-viber") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+.fa-viber:before {
+  font-family: 'fa-viber';
+  content: "\e666"; }
+
 html {
   color: #222;
   font-size: 1em;
@@ -89,15 +100,23 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-.preloader, .content {
-  display: flex;
+.padding-page {
+  padding-top: 5rem; }
+
+.borders-left {
+  border-left: solid 2px #cccccc; }
+
+.borders-right {
+  border-right: solid 2px #cccccc; }
+
+.first-appear {
+  opacity: 0; }
+
+.content {
+  opacity: 0;
   min-height: 100%;
   min-height: 100vh;
   align-items: center; }
-
-.preloader {
-  width: 100%;
-  height: 100%; }
 
 .text-quotes {
   float: right;
@@ -106,8 +125,143 @@ textarea {
   margin: 47px 66px 0 0;
   font-family: 'Calligraph'; }
 
-.logo_container img {
+.logo_container {
+  max-width: 310px; }
+  .logo_container img {
+    width: 100%; }
+
+aside {
+  padding: 5rem !important;
+  color: #00a0df;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  aside .img-24h {
+    height: 5rem;
+    margin-bottom: 1em; }
+  aside .phones {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em; }
+  aside .text-details {
+    font-size: 2em;
+    font-family: 'Roboto Condensed'; }
+  aside .social {
+    margin: 1em 0; }
+    aside .social div {
+      margin: 0.5em 0; }
+    aside .social i {
+      min-width: 40px; }
+
+.feedback-form {
+  padding: 5rem !important;
+  color: #00a0df; }
+  .feedback-form .main_form button {
+    color: white;
+    border: none;
+    background-color: #00a0df;
+    line-height: 40px;
+    padding: 0 25px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 10px;
+    float: right;
+    letter-spacing: 2px; }
+  .feedback-form .form-group {
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 20px; }
+  .feedback-form .color_element {
+    font-weight: 700;
+    font-size: 18px; }
+  .feedback-form .error .text-danger {
+    display: block; }
+  .feedback-form .error input, .feedback-form .error textarea {
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-color: #a94442;
+    outline-offset: -2px; }
+  .feedback-form .text-danger {
+    display: none;
+    color: #a94442;
+    font-size: 11px;
+    margin-top: 5px; }
+  .feedback-form .text-danger ul,
+  .feedback-form .text-danger li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+  .feedback-form input,
+  .feedback-form textarea {
+    letter-spacing: 2px;
+    color: #222;
+    display: block;
+    width: 100%;
+    border: 1px solid #cccccc;
+    margin-top: 5px;
+    line-height: 40px;
+    text-indent: 12px;
+    font-size: 12px;
+    background-color: transparent; }
+    .feedback-form input:focus,
+    .feedback-form textarea:focus {
+      outline-color: #00a0df; }
+  .feedback-form .color_element {
+    color: #a94442; }
+
+.stamp {
+  position: absolute;
+  bottom: 15%;
   width: 100%; }
+  .stamp img {
+    display: block;
+    margin: auto;
+    width: 150px;
+    -ms-transform: rotate(45deg);
+    /* IE 9 */
+    -ms-transform-origin: 20% 40%;
+    /* IE 9 */
+    -webkit-transform: rotate(45deg);
+    /* Chrome, Safari, Opera */
+    -webkit-transform-origin: 20% 40%;
+    /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+    transform-origin: 20% 40%; }
+
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 12px; }
+
+.wizard-footer {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none; }
+  .wizard-footer .wizard-step {
+    float: left;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin-right: 10px; }
+    .wizard-footer .wizard-step.visited {
+      display: none; }
+    .wizard-footer .wizard-step.inactive {
+      background-color: #cccccc; }
+  .wizard-footer .wizard-progress-bar {
+    width: 10px;
+    float: left;
+    height: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #00a0df;
+    -webkit-transition: width 0.4s cubic-bezier(0, 2, 0, 0);
+    -moz-transition: width 0.4s cubic-bezier(0, 2, 0, 0);
+    -ms-transition: width 0.4s cubic-bezier(0, 2, 0, 0);
+    transition: width 0.4s cubic-bezier(0, 2, 0, 0); }
+  .wizard-footer .wizard-step:last-child {
+    margin-right: 0; }
 
 /* ==========================================================================
    JQUERY horizonScroll.js
@@ -129,10 +283,14 @@ section {
 
 .horizon-prev,
 .horizon-next {
+  cursor: pointer;
   position: fixed;
   top: 50%;
   margin-top: -24px;
   z-index: 9999; }
+  .horizon-prev img,
+  .horizon-next img {
+    height: 50px; }
 
 .horizon-prev {
   left: 20px; }
@@ -148,6 +306,9 @@ section {
  */
 .hidden {
   display: none !important; }
+
+.no-max_width {
+  max-width: none; }
 
 /*
  * Hide only visually, but have it available for screen readers:

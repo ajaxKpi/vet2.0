@@ -134,9 +134,8 @@
             return;
         }
 
-        console.log('Scroll to: ' + index);
         $.fn.horizon.defaults.i = index;
-
+         moveStepOnWizard(index)
         var $section = $($.fn.horizon.defaults.sections[index]);
         $('html,body').animate({scrollLeft: $section.offset().left}, speed, 'swing', $.fn.horizon.defaults.fnCallback(index));
 
@@ -153,19 +152,21 @@
     };
 
     var scrollLeft = function () {
-        console.log('Scroll left');
+     
 
         var i2 = $.fn.horizon.defaults.i - 1;
-
+       
         if (i2 > -1) {
+            
             scrollTo(i2, $.fn.horizon.defaults.scrollDuration);
         }
     };
 
     var scrollRight = function () {
-        console.log('Scroll right');
+      
 
         var i2 = $.fn.horizon.defaults.i + 1;
+       
 
         if (i2 < $.fn.horizon.defaults.limit) {
             scrollTo(i2, $.fn.horizon.defaults.scrollDuration);
@@ -196,6 +197,14 @@
 
         $.fn.horizon.defaults.scrollTimeout = setTimeout(scrollEndHandler, $.fn.horizon.defaults.scrollEndDelay);
     };
+    var moveStepOnWizard=function(step){
+        var width =10+ 30*step;
+        $('.wizard-progress-bar').css('width',width);
+        $('.wizard-step').removeClass('visited');
+        for (var i =0; i< step; i++){
+            $('.wizard-step:nth-child('+(i+2)+')').addClass('visited');
+        }
+    }
 
     var sizeSections = function () {
         var iInnerWidth = $(window).innerWidth();

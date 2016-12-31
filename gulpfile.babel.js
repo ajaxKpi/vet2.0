@@ -154,7 +154,7 @@ gulp.task('lint:js', () =>
 gulp.task('scss',(done)=>{
     
     gulp.src('src/css/*.scss')
-    .pipe(scss.sync().on('error', scss.logError))
+    .pipe(scss({includePaths:require('bourbon').includePaths}).on('error', scss.logError))
     .pipe(gulp.dest("dist/css")),
     done()
 })
@@ -162,7 +162,6 @@ gulp.task('scss',(done)=>{
 gulp.task('scss:watch',  (done)=> {
   gulp.watch('src/css/*.scss', ['scss']);
 });
-
 
 
 // ---------------------------------------------------------------------
@@ -179,10 +178,9 @@ gulp.task('archive', (done) => {
 
 gulp.task('build', (done) => {
     runSequence(
-        'clean' ,'scss','copy'),
+        ['clean' ,'scss'],'copy'),
         done()
 });
-
 gulp.task('build:watch',()=>{
     gulp.watch('src/**/**', ['build'])
 })

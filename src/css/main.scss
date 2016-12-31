@@ -25,7 +25,21 @@
 	font-weight: 100;
 	font-style: normal;
 }
+@font-face {
+	font-family: 'fa-viber';
+	src:url('../fonts/fa-viber.eot?-3dwksg');
+	src:url('../fonts/fa-viber.eot?#iefix-3dwksg') format('embedded-opentype'),
+		url('../fonts/fa-viber.ttf?-3dwksg') format('truetype'),
+		url('../fonts/fa-viber.woff?-3dwksg') format('woff'),
+		url('../fonts/fa-viber.svg?-3dwksg#fa-viber') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
+.fa-viber:before {
+	font-family: 'fa-viber';
+	content: "\e666";
+}
 
 
 html {
@@ -110,18 +124,32 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+
 $brand-color : #00a0df;
 $brand-color-second:#cccccc;
-.preloader, .content{   
-      display: flex;
+$page-paddings: 5rem;
+$error-color: #a94442;
+
+.padding-page{
+    padding-top: $page-paddings;
+}
+.borders-left{
+     border-left: solid 2px $brand-color-second;
+}
+.borders-right{
+     border-right: solid 2px $brand-color-second;
+}
+
+
+.first-appear{
+    opacity: 0;
+}
+.content{
+    opacity: 0;
     min-height: 100%; 
     min-height: 100vh;
     align-items: center;
-}
-
-.preloader{
-    width:100%;
-    height: 100%;
 }
 
 .text-quotes{
@@ -133,9 +161,177 @@ $brand-color-second:#cccccc;
     font-family: 'Calligraph';
 }
 .logo_container{
+    max-width: 310px;
     img{width:100%;}
 }
 
+
+aside{
+    padding: $page-paddings !important;
+    color:$brand-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .img-24h{
+    height:5rem;
+    margin-bottom: 1em;
+    }
+
+    .phones{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1em;
+    }
+    .text-details{
+        font-size: 2em;
+        font-family: 'Roboto Condensed';
+    }
+    .social{
+        margin: 1em 0;
+        div{
+            margin: 0.5em 0;
+        }
+        i{
+            min-width: 40px;
+        }
+    }
+}
+
+.feedback-form{
+    padding: $page-paddings !important;
+    color: #00a0df;
+    .main_form button {
+        color:white;
+        border: none;
+        background-color: $brand-color;
+        line-height: 40px;
+        padding: 0 25px;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 10px;
+        float: right;
+        letter-spacing: 2px; 
+        }
+
+.form-group {
+   letter-spacing: 2px;
+  display: block;
+  margin-bottom: 20px; }
+  .color_element {
+    font-weight: 700;
+    font-size: 18px; }
+    .error{
+        .text-danger{
+            display: block;
+        }
+         input, textarea{
+             outline: -webkit-focus-ring-color auto 5px;
+             outline-color: $error-color;
+             outline-offset: -2px;
+         }
+    }
+   .text-danger {
+    display: none;
+    color:$error-color;   
+    font-size: 11px;
+    margin-top: 5px;}
+     .text-danger ul,
+     .text-danger li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+  input,
+  textarea {
+    letter-spacing: 2px;  
+    color:#222;
+    display: block;
+    width: 100%;
+    border: 1px solid $brand-color-second;
+    margin-top: 5px;
+    line-height: 40px;
+    text-indent: 12px;
+    font-size: 12px;
+    background-color: transparent; 
+    &:focus{
+        outline-color: $brand-color
+    }
+    }
+    .color_element{
+    color:$error-color
+}
+}
+
+
+
+.stamp{
+    position: absolute;
+    bottom: 15%;
+    width: 100%;
+    img{
+        display: block;
+        margin: auto;
+        width: 150px;
+        -ms-transform: rotate(45deg); /* IE 9 */
+        -ms-transform-origin: 20% 40%; /* IE 9 */
+        -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+        -webkit-transform-origin: 20% 40%; /* Chrome, Safari, Opera */
+        transform: rotate(45deg);
+        transform-origin: 20% 40%;
+    }
+}
+
+
+
+$step-size:				10px;
+$step-margin: 			$step-size;
+$step-border-radius:	$step-size / 2;
+
+footer{
+    width:100%;
+    position:fixed;
+    bottom: 12px;
+}
+
+.wizard-footer{
+    display: flex;
+    justify-content: center;
+	padding: 0;	
+	margin: 0;
+	list-style-type: none;
+
+	.wizard-step{
+		float: left;
+		width: $step-size;
+		height: $step-size;
+		border-radius: $step-border-radius;
+		margin-right: $step-margin;
+
+		&.visited{
+			display: none;
+		}
+		&.inactive{
+			background-color: $brand-color-second;
+		}
+	}
+
+	.wizard-progress-bar {
+        width:10px;
+		float: left;
+		height: $step-size;
+		border-radius: $step-border-radius;
+		margin-right: $step-margin;
+		background-color: $brand-color;
+		-webkit-transition: width 0.4s cubic-bezier(0,2,0,0);
+		-moz-transition: width 0.4s cubic-bezier(0,2,0,0);
+		-ms-transition: width 0.4s cubic-bezier(0,2,0,0);
+		transition: width 0.4s cubic-bezier(0,2,0,0);
+	}
+
+	.wizard-step:last-child{
+		margin-right: 0;
+	}	
+}
 
 
 
@@ -163,10 +359,14 @@ section {
 
 .horizon-prev,
 .horizon-next {
+  cursor:pointer;  
   position: fixed;
   top: 50%;
   margin-top: -24px;
   z-index: 9999;
+  img{
+      height: 50px;
+  }
 }
 
 .horizon-prev { left: 20px; }
@@ -187,6 +387,13 @@ section {
 .hidden {
     display: none !important;
 }
+
+
+// remove max-width from logo_container
+.no-max_width{
+    max-width: none;
+}
+
 
 /*
  * Hide only visually, but have it available for screen readers:
