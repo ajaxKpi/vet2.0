@@ -122,6 +122,22 @@ textarea {
   align-items: center; }
   .content .container-line svg {
     width: 100%; }
+  .content .service-container {
+    display: flex;
+    width: 100%;
+    padding: 5rem;
+    position: absolute;
+    flex-direction: row;
+    flex-wrap: wrap;
+    top: 0; }
+    .content .service-container .service-item {
+      display: flex;
+      flex-basis: 33%;
+      justify-content: center;
+      padding-bottom: 4rem; }
+      .content .service-container .service-item img {
+        width: 250px;
+        align-self: center; }
 
 .text-quotes {
   float: right;
