@@ -135,6 +135,7 @@
         }
 
         $.fn.horizon.defaults.i = index;
+         animateColorFill(index)
          moveStepOnWizard(index)
         var $section = $($.fn.horizon.defaults.sections[index]);
         $('html,body').animate({scrollLeft: $section.offset().left}, speed, 'swing', $.fn.horizon.defaults.fnCallback(index));
@@ -145,6 +146,8 @@
         } else if (index === $.fn.horizon.defaults.limit - 1) {
             $('.horizon-prev').show();
             $('.horizon-next').hide();
+            // izv add to remove pulse after all steps was done
+            $('.arrow-pulse').removeClass('pulse');
         } else {
             $('.horizon-next').show();
             $('.horizon-prev').show();

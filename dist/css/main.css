@@ -100,6 +100,20 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+.container-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+  .container-img.active-img {
+    height: 0%;
+    overflow: hidden; }
+  .container-img.next-active-img {
+    height: 100%;
+    width: 0%;
+    overflow: hidden; }
+
 .padding-page {
   padding-top: 5rem; }
 
@@ -115,13 +129,28 @@ textarea {
 .first-appear {
   opacity: 0; }
 
+.arrow-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid #00a0df; }
+
 .content {
   opacity: 0;
   min-height: 100%;
   min-height: 100vh;
   align-items: center; }
-  .content .container-line svg {
-    width: 100%; }
+  .content .container-line {
+    position: relative;
+    width: 100%;
+    height: 100vh; }
+  .content .active-im {
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%; }
   .content .service-container {
     display: flex;
     width: 100%;
@@ -143,13 +172,23 @@ textarea {
   float: right;
   text-align: right;
   font-size: 3.5em;
-  margin: 47px 66px 0 0;
+  margin: 85px 66px 0 0;
   font-family: 'Calligraph'; }
 
 .logo_container {
-  max-width: 310px; }
+  max-width: 310px;
+  color: #000;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-align: center; }
   .logo_container img {
     width: 100%; }
+  .logo_container h1 {
+    font-size: 5.5em;
+    margin: 0.5em 0 0 0; }
+  .logo_container h4 {
+    font-size: 2em;
+    margin: 0.5em 0 0 0; }
 
 aside {
   padding: 5rem !important;
@@ -158,7 +197,7 @@ aside {
   flex-direction: column;
   align-items: center; }
   aside .img-24h {
-    height: 5rem;
+    height: 4rem;
     margin-bottom: 1em; }
   aside .phones {
     display: flex;
@@ -237,16 +276,17 @@ aside {
   .stamp img {
     display: block;
     margin: auto;
-    width: 150px;
-    -ms-transform: rotate(45deg);
+    margin-right: 350px;
+    width: 170px;
+    -ms-transform: rotate(24deg);
     /* IE 9 */
     -ms-transform-origin: 20% 40%;
     /* IE 9 */
-    -webkit-transform: rotate(45deg);
+    -webkit-transform: rotate(24deg);
     /* Chrome, Safari, Opera */
     -webkit-transform-origin: 20% 40%;
     /* Chrome, Safari, Opera */
-    transform: rotate(45deg);
+    transform: rotate(24deg);
     transform-origin: 20% 40%; }
 
 footer {
@@ -461,3 +501,25 @@ section {
   h2,
   h3 {
     page-break-after: avoid; } }
+
+.pulse {
+  -webkit-animation: pulset 3s infinite;
+  -moz-animation: pulse 3s infinite;
+  -o-animation: pulse 3s infinite;
+  animation: pulse 3s infinite; }
+
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1);
+    opacity: 0.8; }
+  100% {
+    -moz-transform: scale(1.5);
+    opacity: 0.0; } }
+
+@-webkit-keyframes "pulse" {
+  0% {
+    -webkit-transform: scale(1);
+    opacity: 0.8; }
+  100% {
+    -webkit-transform: scale(1.5);
+    opacity: 0.0; } }

@@ -1,12 +1,42 @@
 // appereance in start
 $(document).ready(() => {
+
+
+    $("[name='tel']").mask("(999) 999-99-99").on("blur", function () {
+        var last = $(this).val().substr($(this).val().indexOf("-") + 1);
+
+        if (last.length == 5) {
+            var move = $(this).val().substr($(this).val().indexOf("-") + 1, 1);
+
+            var lastfour = last.substr(1, 4);
+
+            var first = $(this).val().substr(0, 9);
+
+            $(this).val(first + move + '-' + lastfour);
+        }
+    });
+
+
     $('html, body').animate({
-          scrollTop:0,
-          scrollLeft:0
-        }, 200)
+        scrollTop: 0,
+        scrollLeft: 0
+    }, 200)
     $('.content').fadeTo(2000, 1, () => {
         $('.first-appear').fadeTo(1000, 1, () => {
             $('.second-appear').removeClass('hidden');
+            $('.arrow-pulse').addClass('pulse');
+            // two layers img in contant should be the same (at later as posible)
+            let imageContainer = $('.container-line');
+            $('.container-line img').css({
+                width: imageContainer.width(),
+                height: imageContainer.height()
+            })
+            window.onresize = () => {
+                $('.container-line img').css({
+                    width: imageContainer.width(),
+                    height: imageContainer.height()
+                })
+            }
         })
     });
 
@@ -25,6 +55,28 @@ $(document).ready(() => {
     });
 })
 
+
+
+// content page animation
+
+
+function animateColorFill(i) {
+    var current = $('#section-section' + (i + 1) + ' .pending')
+    if (!current.length) { return }
+    $('.active-img').animate({
+        height: '84%'
+    }, 5000, "linear", () => {
+        $('.next-active-img').width('2%').animate({
+            width: '100%'
+        }, 4000, "linear").removeClass('pending')
+    }
+    ).removeClass('pending');
+}
+
+
+
+
+// form page
 $('.main_form').submit(event => {
     let noErrors = true;
     let inputArray = Object.keys(event.target).filter(el => ++el == el).map(fe => event.target[fe]);
