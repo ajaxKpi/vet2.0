@@ -160,6 +160,11 @@ $error-color: #a94442;
      border-right: solid 2px $brand-color-second;
 }
 
+.reverse{
+        transform: rotateY(180deg)
+}
+
+
 .first-appear{
     opacity: 0;
 }
